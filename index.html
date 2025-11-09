@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClimaControl - Venta, Instalación y Mantenimiento de Minisplits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --secondary: #00a8e8;
+            --accent: #ff6600;
+            --light: #f5f9ff;
+            --dark: #333333;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 102, 204, 0.8), rgba(0, 168, 232, 0.8)), url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e55c00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #0055aa;
+        }
+        
+        /* Services Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            background-color: var(--light);
+            padding: 30px;
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 3rem;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 10px;
+            background-image: url('https://images.unsplash.com/photo-1581822261290-991a386a1f93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            background-color: var(--light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- Logo placeholder -->
+                <div style="width: 50px; height: 50px; background-color: var(--primary); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">CC</div>
+                <h1>ClimaControl</h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Especialistas en Minisplits</h2>
+            <p>Venta, instalación y mantenimiento de sistemas de aire acondicionado. Garantía y calidad en cada servicio.</p>
+            <a href="#contacto" class="btn">Solicitar Cotización</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos soluciones completas para el confort de tu hogar o negocio</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Venta de Equipos</h3>
+                        <p>Ofrecemos las mejores marcas de minisplits con garantía oficial. Asesoría técnica para seleccionar el equipo ideal según tus necesidades.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Instalación Profesional</h3>
+                        <p>Instalación por técnicos certificados, cumpliendo con todos los estándares de seguridad y eficiencia energética.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Mantenimiento Preventivo</h3>
+                        <p>Limpieza, revisión y calibración de equipos para asegurar su óptimo funcionamiento y prolongar su vida útil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="productos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Productos</h2>
+                <p>Equipos de calidad con las mejores tecnologías del mercado</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Minisplit Inverter 1.5 Ton</h3>
+                        <p>Tecnología inverter para máximo ahorro energético. Ideal para espacios de 20-25 m².</p>
+                        <div class="product-price">$8,500 MXN</div>
+                        <a href="#contacto" class="btn btn-primary">Cotizar</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Minisplit Convencional 2 Ton</h3>
+                        <p>Alta eficiencia y durabilidad. Perfecto para áreas de 30-35 m².</p>
+                        <div class="product-price">$7,200 MXN</div>
+                        <a href="#contacto" class="btn btn-primary">Cotizar</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Minisplit Inverter 2.5 Ton</h3>
+                        <p>Máxima potencia para espacios grandes. Tecnología inverter para ahorro hasta 40%.</p>
+                        <div class="product-price">$12,800 MXN</div>
+                        <a href="#contacto" class="btn btn-primary">Cotizar</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Minisplit Dual 1.5 Ton</h3>
+                        <p>Dos unidades interiores conectadas a un compresor exterior. Solución ideal para dos habitaciones.</p>
+                        <div class="product-price">$14,500 MXN</div>
+                        <a href="#contacto" class="btn btn-primary">Cotizar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="nosotros">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nosotros</h2>
+                <p>Más de 10 años brindando soluciones de climatización</p>
+            </div>
+            
+            <div class="about-container">
+                <div class="about-content">
+                    <h3>Expertos en Climatización</h3>
+                    <p>En ClimaControl nos especializamos en la venta, instalación y mantenimiento de sistemas de aire acondicionado tipo minisplit. Contamos con técnicos certificados y amplia experiencia en el sector.</p>
+                    
+                    <p>Nuestra misión es proporcionar soluciones de climatización eficientes que mejoren la calidad de vida de nuestros clientes, siempre con un servicio profesional y de calidad.</p>
+                    
+                    <h4 style="margin-top: 20px;">¿Por qué elegirnos?</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Técnicos certificados y con experiencia</li>
+                        <li>Garantía en todos nuestros servicios</li>
+                        <li>Precios competitivos y transparentes</li>
+                        <li>Atención personalizada</li>
+                        <li>Respuesta rápida a emergencias</li>
+                    </ul>
+                </div>
+                
+                <div class="about-image">
+                    <!-- Imagen sobre nosotros -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contáctanos</h2>
+                <p>Estamos aquí para resolver todas tus dudas y proporcionarte la mejor solución</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>Av. Principal #123, Col. Centro, Tu Ciudad</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+52 123 456 7890</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@climacontrol.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Horario de Atención</h4>
+                            <p>Lun - Vie: 9:00 am - 7:00 pm</p>
+                            <p>Sábados: 9:00 am - 2:00 pm</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Nombre completo" required>
+                        <input type="email" placeholder="Correo electrónico" required>
+                        <input type="tel" placeholder="Teléfono">
+                        <select style="width: 100%; padding: 12px 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
+                            <option value="">Selecciona un servicio</option>
+                            <option value="venta">Venta de equipo</option>
+                            <option value="instalacion">Instalación</option>
+                            <option value="mantenimiento">Mantenimiento</option>
+                            <option value="reparacion">Reparación</option>
+                        </select>
+                        <textarea placeholder="Mensaje" required></textarea>
+                        <button type="submit" class="btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>ClimaControl</h3>
+                    <p>Especialistas en venta, instalación y mantenimiento de minisplits. Garantía y calidad en cada servicio.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#">Venta de Minisplits</a></li>
+                        <li><a href="#">Instalación Profesional</a></li>
+                        <li><a href="#">Mantenimiento</a></li>
+                        <li><a href="#">Reparación</a></li>
+                        <li><a href="#">Limpieza de Equipos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Principal #123, Col. Centro</li>
+                        <li><i class="fas fa-phone"></i> +52 123 456 7890</li>
+                        <li><i class="fas fa-envelope"></i> info@climacontrol.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ClimaControl. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
